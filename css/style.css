@@ -1556,10 +1556,12 @@ p.center {
 }
 
 .nav-section .nav-logo {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 25px;
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    font-weight: bolder;
     padding: 5px 0;
 }
+
 
 .nav-section .nav-logo img {
     max-height: 100%;
