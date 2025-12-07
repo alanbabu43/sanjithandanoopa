@@ -107,27 +107,29 @@
 		100% { transform: translateY(0); }
 	}
 
-#audioControl {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-}
+	/* Hide iPhone grey play button */
+	#bgAudio {
+		display: none; /* THE MAIN FIX */
+	}
 
-#audioControl button {
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    backdrop-filter: blur(5px);
-    transition: 0.3s;
-}
+	#audioControl {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		z-index: 9999; 
+	}
 
-
-
+	#audioControl button {
+		background: rgba(0,0,0,0.5);
+		color: #fff;
+		border: none;
+		padding: 10px 15px;
+		border-radius: 8px;
+		cursor: pointer;
+		font-size: 14px;
+		backdrop-filter: blur(5px);
+		transition: 0.3s;
+	}
 
 </style>
 <body>
@@ -348,7 +350,7 @@
 								</div> -->
 
 								<div class="image-1" data-parallax="-4" data-animation-direction="from-left" data-animation-delay="250">
-									<img src="images/34.jpg" alt="" width="600" height="600">
+									<img src="images/35.jpg" alt="" width="600" height="600">
 								</div>
 
 								<div class="image-2" data-parallax="6" data-animation-direction="from-right" data-animation-delay="250">
@@ -529,13 +531,15 @@
 			</div>
 
 			<!-- Hidden audio/video element -->
-<video id="bgAudio" style="display:none;">
-    <source src="video/Alex Warren - Ordinary.mp3" type="audio/mpeg">
-</video>
+<audio id="bgAudio">
+   <source src="video/Alex Warren - Ordinary.mp3" type="audio/mpeg">
+</audio>
 
 <!-- Play/Pause Button -->
 <div id="audioControl">
-    <button id="toggleBtn">▶</button>
+    <button id="toggleBtn">
+        <i id="icon" class="fa-solid fa-play"></i>
+    </button>
 </div>
 
 		</footer>
@@ -600,25 +604,28 @@
 	</script>
 
 	<script>
-    const audio = document.getElementById("bgAudio");
-    const btn = document.getElementById("toggleBtn");
+	const audio = document.getElementById("bgAudio");
+	const btn = document.getElementById("toggleBtn");
+	const icon = document.getElementById("icon");
 
-    // Allow audio to play with sound after a user click
-    audio.volume = 1;
+	btn.addEventListener("click", () => {
+		if (audio.paused) {
+			audio.play();
+			icon.classList.remove("fa-play");
+			icon.classList.add("fa-pause");
+		} else {
+			audio.pause();
+			icon.classList.remove("fa-pause");
+			icon.classList.add("fa-play");
+		}
+	});
 
-    btn.addEventListener("click", () => {
-        if (audio.paused) {
-            audio.play();
-            audio.muted = false; // unmute when user clicks play
-            btn.textContent = "⏸";
-        } else {
-            audio.pause();
-            btn.textContent = "▶";
-        }
-    });
+	// optional: switch back to play when music ends
+	audio.addEventListener("ended", () => {
+		icon.classList.remove("fa-pause");
+		icon.classList.add("fa-play");
+	});
 	</script>
-
-
 
 
 </body>
