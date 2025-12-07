@@ -68,6 +68,48 @@
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-3.6.0.min.js"></script>
 </head>
+<style>
+	.scroll-circle {
+		position: absolute;
+		bottom: 30px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 55px;
+		height: 55px;
+		background: rgba(0, 0, 0, 0.4);
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		opacity: 1;
+		transition: opacity 0.5s ease;
+	}
+
+	/* Animate ONLY the wrapper */
+	.arrow-wrapper {
+		animation: bounceArrow 2s infinite;
+	}
+
+	/* Arrow shape remains rotated */
+	.arrow {
+		border: solid white;
+		border-width: 0 4px 4px 0;
+		display: inline-block;
+		padding: 12px;
+		transform: rotate(45deg);  /* stays fixed */
+	}
+
+	/* Movement is straight down */
+	@keyframes bounceArrow {
+		0%   { transform: translateY(0); }
+		50%  { transform: translateY(10px); }
+		100% { transform: translateY(0); }
+	}
+
+
+
+</style>
 <body>
 
 	<!-- BEGIN PRELOADER -->
@@ -145,6 +187,8 @@
 					</div>
 				</div>
 			</div>
+			
+
 		</header>
 		<!-- END HEADER -->
 
@@ -174,6 +218,14 @@
 					</div>
 				</div>
 			</div>
+			<div class="scroll-circle" id="scrollCircle">
+				<div class="arrow-wrapper">
+					<i class="arrow"></i>
+				</div>
+			</div>
+
+
+
 		</section>
 		<!-- END HERO SECTION -->
 
@@ -502,6 +554,20 @@
 
 	  gtag('config', 'G-7JZLG63NQZ');
 	</script>
+	<script>
+	document.addEventListener("scroll", function () {
+		const circle = document.getElementById("scrollCircle");
+
+		if (window.scrollY > 20) {
+			circle.style.opacity = "0";  // Hide
+		} else {
+			circle.style.opacity = "1";  // Show
+		}
+	});
+	</script>
+
+
+
 </body>
 
 <!-- Mirrored from www.wiselythemes.com/html/neela/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Nov 2025 13:52:11 GMT -->
