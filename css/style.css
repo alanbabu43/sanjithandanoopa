@@ -1530,7 +1530,7 @@ p.center {
 .nav-section {
     padding: 0;
     min-height: 70px;
-    background: #fff;
+    /* background: #fff; */
     text-align: center
 }
 
