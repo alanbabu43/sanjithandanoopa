@@ -18,6 +18,7 @@ var hero_full_screen = true;                    //If true, the hero section will
 var slidehow_images = [
     // "images/18.3.jpg",
     "images/background1.jpeg",
+    "images/n3.jpeg",
     "images/background2.jpeg",
     // "images/27.jpg",
     // "images/bride_groom.jpg",
